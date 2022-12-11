@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -67,7 +67,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar = (childrens: { children: React.ReactFragment }) => {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
 
@@ -85,7 +84,7 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
+      <AppBar position="fixed" open={open} color="transparent">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -96,7 +95,13 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            sx={{ flexGrow: 1 }}
+            variant="h6"
+            align="center"
+            noWrap
+            component="div"
+          >
             Characters
           </Typography>
         </Toolbar>
@@ -105,6 +110,7 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
         sx={{
           width: drawerWidth,
           flexShrink: 0,
+
           "& .MuiDrawer-paper": {
             width: "100%",
             boxSizing: "border-box",
@@ -117,7 +123,6 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>{<ClearIcon />}</IconButton>
         </DrawerHeader>
-
         <List>
           {listItems.map((item, index) => (
             <ListItem

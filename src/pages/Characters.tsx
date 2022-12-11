@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import characterService from "../api/characters-service";
+import CharacterItem from "../components/CharacterItem";
+import { Character } from "../types";
 
 function Characters() {
-  const [characters, setCharacters] = useState<any[]>([]);
+  const [characters, setCharacters] = useState<Character[]>([]);
   useEffect(() => {
     async function fetchData() {
       const data = await characterService.getCharacters();
@@ -15,8 +17,8 @@ function Characters() {
     <div>
       {characters.length === 0 && <p>Loading...</p>}
       <ul>
-        {characters.map((character) => (
-          <li key={character.name + character.birth_year}>{character.name}</li>
+        {characters.map((character: Character) => (
+          <CharacterItem characterItem={character} />
         ))}
       </ul>
     </div>
