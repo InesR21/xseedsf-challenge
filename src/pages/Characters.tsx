@@ -13,7 +13,6 @@ function Characters() {
 
   return (
     <div>
-      <h1>Characters</h1>
       {characters.length === 0 && <p>Loading...</p>}
       <ul>
         {characters.map((character) => (
