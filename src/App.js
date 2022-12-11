@@ -4,10 +4,10 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Sidebar from './layout/Sidebar.tsx';
-import Characters from './pages/Characters.tsx';
-import Favorites from './pages/Favorites.tsx';
-import NoPage from './pages/NoPage.tsx';
+import Sidebar from './layout/Sidebar';
+import Characters from './pages/Characters';
+import Favorites from './pages/Favorites';
+import NoPage from './pages/NoPage';
 
 
 function App() {
