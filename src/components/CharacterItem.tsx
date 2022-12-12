@@ -1,9 +1,11 @@
 import React from "react";
+import { Character } from "../types";
 
-const CharacterItem = (characterItem: any) => {
-  const character = characterItem.characterItem;
+interface CharacterItemProps {
+  character: Character;
+}
 
-  console.log(character);
+const CharacterItem = ({ character }: CharacterItemProps) => {
   return (
     <li key={character.name + character.birth_year}>
       <div>

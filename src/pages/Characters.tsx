@@ -5,6 +5,7 @@ import { Character } from "../types";
 
 function Characters() {
   const [characters, setCharacters] = useState<Character[]>([]);
+
   useEffect(() => {
     async function fetchData() {
       const data = await characterService.getCharacters();
@@ -17,9 +18,20 @@ function Characters() {
     <div>
       {characters.length === 0 && <p>Loading...</p>}
       <ul>
-        {characters.map((character: Character) => (
-          <CharacterItem characterItem={character} />
-        ))}
+        {characters.map((person: Character) => {
+          const character: Character = {
+            name: person.name,
+            gender: person.gender,
+            birth_year: person.birth_year,
+            homeworld: person.homeworld,
+          };
+          return (
+            <CharacterItem
+              key={person.name + person.birth_year}
+              character={character}
+            />
+          );
+        })}
       </ul>
     </div>
   );
