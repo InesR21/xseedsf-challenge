@@ -22,7 +22,7 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
   const dispatch = useDispatch();
 
   const favourites = useSelector((state: any) => state.favourites.favourites);
-  const findFavourite = favourites.find(
+  const findFavourite = favourites?.find(
     (favourite: Character) => favourite.id === character.id
   );
 

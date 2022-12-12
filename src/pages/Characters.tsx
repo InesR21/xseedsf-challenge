@@ -2,16 +2,10 @@ import React, { useEffect, useState } from "react";
 import characterService from "../api/characters-service";
 import CharacterItem from "../components/CharacterItem";
 import { Character } from "../types";
+import { getIdFromUrl } from "../utils";
 
 function Characters() {
   const [characters, setCharacters] = useState<Character[]>([]);
-
-  const getIdFromUrl = (url: string) => {
-    const urlParts = url.split("/");
-    const urlString = urlParts[urlParts.length - 2];
-    const characterId = parseInt(urlString, 10);
-    return characterId;
-  };
 
   useEffect(() => {
     async function fetchData() {
