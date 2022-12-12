@@ -1,7 +1,7 @@
 import { Chip, Divider, List, ListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Character } from "../types";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import IconButton from "@mui/material/IconButton";
 import characterService from "../api/characters-service";
@@ -23,32 +23,46 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
   }, [character, homeworld]);
 
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <List
+      sx={{ width: "100%", paddingRight: "10px", bgcolor: "background.paper" }}
+    >
       <ListItem
         key={character.name + character.birth_year}
         disableGutters
-        sx={{ p: 0 }}
-        secondaryAction={
-          <IconButton>
-            <FavoriteIcon />
-          </IconButton>
-        }
+        sx={{
+          p: 0,
+          flex: 1,
+          justifyContent: "space-between",
+        }}
       >
-        <div>
-          <span>{character.name}</span>
-          <br />
-          <span>
-            {character.gender} | {character.birth_year}
-          </span>
-          <br />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            flex: "1",
+          }}
+        >
           <div>
-            <Chip
-              sx={{ borderRadius: "5px", marginTop: "5px" }}
-              icon={<LocationOnOutlinedIcon />}
-              label={homeworldName}
-            />
+            <span>{character.name}</span>
+            <br />
+            <span>
+              {character.gender} | {character.birth_year}
+            </span>
+            <br />
+            <div>
+              <Chip
+                sx={{ borderRadius: "6px", marginTop: "5px", padding: "2px" }}
+                icon={<PlaceOutlinedIcon />}
+                label={homeworldName}
+              />
+            </div>
+            <br />
           </div>
-          <br />
+          <div>
+            <IconButton>
+              <FavoriteIcon sx={{ fontSize: 20 }} />
+            </IconButton>
+          </div>
         </div>
       </ListItem>
       <Divider variant="fullWidth" component="li" />

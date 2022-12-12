@@ -16,7 +16,20 @@ function Characters() {
 
   return (
     <div>
-      {characters.length === 0 && <p>Loading...</p>}
+      {characters.length === 0 && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+            fontSize: "2rem",
+          }}
+        >
+          <p>Loading...</p>
+        </div>
+      )}
       <ul>
         {characters.map((person: Character) => {
           const character: Character = {
