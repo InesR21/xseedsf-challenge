@@ -1,6 +1,6 @@
 import { Chip, Divider, List, ListItem } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Character } from "../types";
+import { Character } from "../utils/types";
 import PlaceOutlinedIcon from "@mui/icons-material/PlaceOutlined";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";

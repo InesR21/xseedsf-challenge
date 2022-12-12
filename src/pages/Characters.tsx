@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import characterService from "../api/characters-service";
 import CharacterItem from "../components/CharacterItem";
-import { Character } from "../types";
+import { Character } from "../utils/types";
 import { getIdFromUrl } from "../utils";
 
 function Characters() {

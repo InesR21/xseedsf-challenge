@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Character } from "../types";
+import { Character } from "../utils/types";
 import CharacterItem from "../components/CharacterItem";
 import SearchBar from "../components/SearchBar";
 import { getIdFromUrl } from "../utils";
