@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useMatch } from "react-router-dom";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -15,6 +15,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import { ListItemText } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const drawerWidth = 240;
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
@@ -66,8 +67,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar = (childrens: { children: React.ReactFragment }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  type TitleHeader = "Characters" | "Favorites";
+  const [titleheader, setTitleHeader] = useState("" as TitleHeader);
   const navigate = useNavigate();
+  const isFavorite = useMatch("/favoritos");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -80,6 +84,14 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
     { text: "Characters", link: () => navigate("/") },
     { text: "Favorites", link: () => navigate("/favoritos") },
   ];
+  useEffect(() => {
+    if (isFavorite?.pathname === "/favoritos") {
+      setTitleHeader("Favorites");
+    } else {
+      setTitleHeader("Characters");
+    }
+  }, [isFavorite]);
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -105,7 +117,7 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
             noWrap
             component="div"
           >
-            Characters
+            {titleheader}
           </Typography>
         </Toolbar>
       </AppBar>

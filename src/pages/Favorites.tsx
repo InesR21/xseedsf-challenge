@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Character } from "../types";
 import CharacterItem from "../components/CharacterItem";
+import SearchBar from "../components/SearchBar";
 
 const Favorites = () => {
   const favourites: Character[] = useSelector(
@@ -20,11 +21,8 @@ const Favorites = () => {
       {favourites.length === 0 && (
         <div
           style={{
-            display: "flex",
-            height: "100vh",
-            width: "100vw",
             fontSize: "2rem",
-            padding: "2rem",
+            padding: "3rem",
           }}
         >
           <p>No tienes Favoritos agregados</p>
@@ -33,6 +31,7 @@ const Favorites = () => {
 
       <>
         <ul>
+          <SearchBar />
           {favourites.map((person: Character) => {
             const id = getIdFromUrl(person.url);
             const character: Character = {
