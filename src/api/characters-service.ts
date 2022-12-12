@@ -8,6 +8,10 @@ const getCharacter = async (id: number) => {
   return await axios.get(`https://swapi.dev/api/people/${id}`);
 };
 
-const characterService = { getCharacters, getCharacter };
+const getCharacterHomeworld = async (url: string) => {
+  return await axios.get(url);
+};
+
+const characterService = { getCharacters, getCharacter, getCharacterHomeworld };
 
 export default characterService;
