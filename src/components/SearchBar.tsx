@@ -14,8 +14,9 @@ const Search = styled("div")(({ theme }) => ({
   "&:hover": {
     backgroundColor: "#1E1E1E",
   },
-  marginLeft: 0,
+  marginLeft: -8,
   width: "100%",
+  backgroundImage: "none",
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -35,12 +36,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
-    width: "1000vw",
+    width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+      width: "80ch",
     },
   },
 }));
@@ -57,6 +55,7 @@ const SearchBar = ({ handleSearchChange }: SearchBarProps) => {
         onChange={(event) =>
           handleSearchChange((event.target as HTMLInputElement).value)
         }
+        sx={{ backgroundImage: "none" }}
       >
         <Search>
           <SearchIconWrapper>
