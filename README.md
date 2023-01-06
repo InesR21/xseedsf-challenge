@@ -27,4 +27,4 @@ Si quieres darle un vistazo sin clonar aca un link con una [Demo](https://xseeds
 
 ## Autores ✒️
 
-- **Ines Rojas** - _Front End Developer_ - [InesR](https://www.linkedin.com/in/ines-rojasc/)
+- **Ines Rojas** - _Front End Developer_ - [InesR](https://inesrojas.com/)
