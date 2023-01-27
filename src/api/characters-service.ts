@@ -12,6 +12,24 @@ const getCharacterHomeworld = async (url: string) => {
   return await axios.get(url);
 };
 
-const characterService = { getCharacters, getCharacter, getCharacterHomeworld };
+const getJobs = async () => {
+  return await axios.get(
+    "https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty"
+  );
+};
+
+const getJob = async (id: number) => {
+  return await axios.get(
+    `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
+  );
+};
+
+const characterService = {
+  getCharacters,
+  getCharacter,
+  getCharacterHomeworld,
+  getJobs,
+  getJob,
+};
 
 export default characterService;
