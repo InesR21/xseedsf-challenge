@@ -68,10 +68,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const Sidebar = (childrens: { children: React.ReactFragment }) => {
   const [open, setOpen] = useState(false);
-  type TitleHeader = "Characters" | "Favorites";
+  type TitleHeader = "Characters" | "Favorites" | "Hacker News Jobs";
   const [titleheader, setTitleHeader] = useState("" as TitleHeader);
   const navigate = useNavigate();
   const isFavorite = useMatch("/favoritos");
+  const isJob = useMatch("/home");
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -83,14 +84,17 @@ const Sidebar = (childrens: { children: React.ReactFragment }) => {
   const listItems = [
     { text: "Characters", link: () => navigate("/") },
     { text: "Favorites", link: () => navigate("/favoritos") },
+    { text: "Jobs", link: () => navigate("/home") },
   ];
   useEffect(() => {
     if (isFavorite?.pathname === "/favoritos") {
       setTitleHeader("Favorites");
+    } else if (isJob?.pathname === "/home") {
+      setTitleHeader("Hacker News Jobs");
     } else {
       setTitleHeader("Characters");
     }
-  }, [isFavorite]);
+  }, [isFavorite, isJob?.pathname]);
 
   return (
     <Box sx={{ display: "flex" }}>
